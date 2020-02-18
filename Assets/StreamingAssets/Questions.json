@@ -3,29 +3,121 @@
     [
         {
             "id": 0,
-            "name_ru": "1 + 1?",
+            "name_ru": "одни + один?",
+            "name_en": "one + one?",
+            "name_kz": "бир + бир?",
             "right_answer_id": 2,
             "options":
             [
                {
                     "id": 0,
-                    "name_ru": "4"
+                    "name_ru": "четыре",
+                    "name_en": "four",
+                    "name_kz": "торт"
                },
                {
                     "id": 1,
-                    "name_ru": "100"
+                    "name_ru": "сто",
+                    "name_en": "hundred",
+                    "name_kz": "жуз"
                 },
                 {
                     "id": 2,
-                    "name_ru": "2"
+                    "name_ru": "два",
+                    "name_en": "two",
+                    "name_kz": "еки"
                },
                {
                     "id": 3,
-                    "name_ru": "6"
+                    "name_ru": "шесть",
+                    "name_en": "six",
+                    "name_kz": "алты"
                 },
                 {
                     "id": 4,
-                    "name_ru": "3"
+                    "name_ru": "три",
+                    "name_en": "three",
+                    "name_kz": "уш"
+               }
+            ]
+        },
+        {
+            "id": 1,
+            "name_ru": "одни + один?",
+            "name_en": "one + one?",
+            "name_kz": "бир + бир?",
+            "right_answer_id": 2,
+            "options":
+            [
+               {
+                    "id": 0,
+                    "name_ru": "четыре",
+                    "name_en": "four",
+                    "name_kz": "торт"
+               },
+               {
+                    "id": 1,
+                    "name_ru": "сто",
+                    "name_en": "hundred",
+                    "name_kz": "жуз"
+                },
+                {
+                    "id": 2,
+                    "name_ru": "два",
+                    "name_en": "two",
+                    "name_kz": "еки"
+               },
+               {
+                    "id": 3,
+                    "name_ru": "шесть",
+                    "name_en": "six",
+                    "name_kz": "алты"
+                },
+                {
+                    "id": 4,
+                    "name_ru": "три",
+                    "name_en": "three",
+                    "name_kz": "уш"
+               }
+            ]
+        },
+        {
+            "id": 2,
+            "name_ru": "одни + один?",
+            "name_en": "one + one?",
+            "name_kz": "бир + бир?",
+            "right_answer_id": 2,
+            "options":
+            [
+               {
+                    "id": 0,
+                    "name_ru": "четыре",
+                    "name_en": "four",
+                    "name_kz": "торт"
+               },
+               {
+                    "id": 1,
+                    "name_ru": "сто",
+                    "name_en": "hundred",
+                    "name_kz": "жуз"
+                },
+                {
+                    "id": 2,
+                    "name_ru": "два",
+                    "name_en": "two",
+                    "name_kz": "еки"
+               },
+               {
+                    "id": 3,
+                    "name_ru": "шесть",
+                    "name_en": "six",
+                    "name_kz": "алты"
+                },
+                {
+                    "id": 4,
+                    "name_ru": "три",
+                    "name_en": "three",
+                    "name_kz": "уш"
                }
             ]
         }

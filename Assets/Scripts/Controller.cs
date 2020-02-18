@@ -7,16 +7,21 @@ public class Controller : MonoBehaviour
     private List<Question> questions;
 
     [SerializeField]
-    private Button firstOption;
+    private ButtonController buttonController;
+    [SerializeField]
+    private LanguageController languageController;
 
     [SerializeField]
     private Transform gamePanel, statisticPanel;
 
     [SerializeField]
-    private Text questionText, accuracyText, totalAnswerCountText, correctAnswerCountText;
+    private Text accuracyText, totalAnswerCountText, correctAnswerCountText;
 
     [SerializeField]
-    private Text firstOptionText, secondOptionText, thirdOptionText, fourthOptionText, fifthOptionText;
+    private Button restartButton;
+
+    [SerializeField]
+    private Dropdown languageDropdown;
 
     private int currentQuestion;
     private int correctAnswers;
@@ -24,19 +29,15 @@ public class Controller : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {   
-        currentQuestion = 0;
-        correctAnswers = 0;
+        restartButton.onClick.AddListener(RestartGame);
+        languageDropdown.onValueChanged.AddListener(SelectLanguage);
 
-        SetOptionsToButtons();
-
-        gamePanel.gameObject.SetActive(true);
-        statisticPanel.gameObject.SetActive(false);
-
-        questionText.text = questions[currentQuestion].name_ru;
+        RecreateButtons();
+        languageController.SetQuestion(questions[currentQuestion + 1]);
     }
 
-    private void Answer(int answer)
-    {   
+    public void CheckAnswer(int answer)
+    {
         if(questions[currentQuestion].right_answer_id == answer)
         {
             correctAnswers++;
@@ -44,11 +45,8 @@ public class Controller : MonoBehaviour
 
         if((currentQuestion + 1) <= questions.Count - 1)
         {
-            questionText.text = questions[currentQuestion + 1].name_ru;
-            
-            // ClearButtons();
-
-            SetOptionsToButtons();
+            RecreateButtons();
+            languageController.SetQuestion(questions[currentQuestion + 1]);
         }
         else
         {
@@ -63,28 +61,36 @@ public class Controller : MonoBehaviour
         }
         currentQuestion++;
     }
-    
-    private void SetOptionsToButtons()
+
+    private void RecreateButtons()
     {
-        for(int i = 0; i < questions[currentQuestion].options.Count; i++)
-        {
-            var button = Instantiate(firstOption, firstOption.transform.parent);
-            button.GetComponent<ButtonInit>().Init(questions[currentQuestion].options[i].name_ru);
-            button.onClick.AddListener(() => Answer(questions[currentQuestion].options[i].id));
-        }
+        var currentLanguage = languageController.GetCurrentLanguage();
+
+        buttonController.ClearButtons();
+        buttonController.Init(questions[currentQuestion].options, currentLanguage);
     }
 
-    // private void ClearButtons()
-    // {
-    //     firstOption.onClick.RemoveAllListeners();
-    //     secondOption.onClick.RemoveAllListeners();
-    //     thirdOption.onClick.RemoveAllListeners();
-    //     fourthOption.onClick.RemoveAllListeners();
-    //     fifthOption.onClick.RemoveAllListeners();
-    // }
+    private void RestartGame()
+    {
+        currentQuestion = 0;
+        correctAnswers = 0;
+
+        gamePanel.gameObject.SetActive(true);
+        statisticPanel.gameObject.SetActive(false);
+
+        RecreateButtons();
+    }
+
+    private void SelectLanguage(int languageCode)
+    {
+        var language = (Languages)languageCode;
+        languageController.ChangeLanguage(language);
+    }
 
     private void OnDestroy() {
-        // ClearButtons();
+        buttonController.ClearButtons();
+        restartButton.onClick.RemoveAllListeners();
+        languageDropdown.onValueChanged.RemoveAllListeners();
     }
 
     public void SetData(List<Question> questions)
