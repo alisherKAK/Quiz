@@ -11,32 +11,16 @@ public class ButtonInit : MonoBehaviour
     private Button currentButton;
 
     public Action<int> onButtonClick;
-    private Option option;
+    private int id;
 
-    public void Init(Option option, Languages language){
-        this.option = option;
-        ChangeLanguage(language);
+    public void Init(int id, string text){
+        this.id = id;
+        buttonText.text = text;
         currentButton.onClick.AddListener(Click);
     }
 
     private void Click(){
-        onButtonClick(option.id);
-    }
-
-    public void ChangeLanguage(Languages language)
-    {
-        switch(language)
-        {
-            case Languages.Russian:
-                buttonText.text = option.name_ru;
-                break;
-            case Languages.English:
-                buttonText.text = option.name_en;
-                break;
-            case Languages.Kazakh:
-                buttonText.text = option.name_kz;
-                break;
-        }
+        onButtonClick(id);
     }
 
     private void OnDestroy() {
