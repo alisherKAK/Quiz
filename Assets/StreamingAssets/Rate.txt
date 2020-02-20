@@ -1,0 +1,1 @@
+{"users":[{"id":2,"nickname":"ihfdjhsdf","totalQuestions":3,"correctQuestions":3,"accuracy":100},{"id":1,"nickname":"123","totalQuestions":3,"correctQuestions":1,"accuracy":33},{"id":0,"nickname":"123","totalQuestions":3,"correctQuestions":1,"accuracy":33}]}
